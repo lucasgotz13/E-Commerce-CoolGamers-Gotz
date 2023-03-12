@@ -1,0 +1,52 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    theme: {
+        fontFamily: {
+            Poppins: ["Poppins"],
+        },
+        colors: {
+            primary: "#FFFFFF",
+            secondary: "#6a00ff",
+            accent: "#00b4d8",
+            gray: {
+                50: "#f2f2f3",
+                100: "#e5e4e7",
+                200: "#cccace",
+                300: "#b2afb6",
+                400: "#99959d",
+                500: "#7f7a85",
+                600: "#66626a",
+                700: "#4c4950",
+                800: "#333135",
+                900: "#19181b",
+            },
+            lime: {
+                50: "#f5ffe5",
+                100: "#ebffcc",
+                200: "#d6ff99",
+                300: "#c2ff66",
+                400: "#adff33",
+                500: "#99ff00",
+                600: "#7acc00",
+                700: "#5c9900",
+                800: "#3d6600",
+                900: "#1f3300",
+            },
+            green: {
+                50: "#e8ffe5",
+                100: "#d1ffcc",
+                200: "#a3ff99",
+                300: "#76ff66",
+                400: "#48ff33",
+                500: "#1aff00",
+                600: "#15cc00",
+                700: "#109900",
+                800: "#0a6600",
+                900: "#053300",
+            },
+        },
+        extend: {},
+    },
+    plugins: [],
+};

@@ -1,23 +1,80 @@
-import "./Navbar.css";
 import CartWidget from "../CartWidget";
+import { NavLink } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { useState } from "react";
 
 function Navbar() {
+    const [menu, setMenu] = useState(false);
+
+    const handleMenuToggle = () => {
+        setMenu(!menu);
+    };
+
     return (
-        <div className="container">
-            <h1>E-Commerce</h1>
-            <ul className="categorias">
-                <li>
-                    <button>PC Armadas</button>
-                </li>
-                <li>
-                    <button>Perifericos</button>
-                </li>
-                <li>
-                    <button>Componentes</button>
-                </li>
+        <>
+            <nav className="hidden sm:flex sm:justify-between sm:items-center sm:py-1 sm:px-5 font-Poppins bg-primary shadow-lg">
+                <h1 className="text-2xl text-secondary">
+                    <NavLink to={"/"}>CoolGamers</NavLink>
+                </h1>
+                <ul className="list-none flex justify-between items-center gap-5 mr-24 text-secondary font-bold">
+                    <NavLink className="" to={"/category/pc"}>
+                        <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
+                            PC
+                        </button>
+                    </NavLink>
+                    <NavLink className="" to={"/category/perifericos"}>
+                        <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
+                            Perifericos
+                        </button>
+                    </NavLink>
+                    <NavLink
+                        className="hover:bg-slate-50"
+                        to={"/category/componentes"}
+                    >
+                        <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
+                            Componentes
+                        </button>
+                    </NavLink>
+                </ul>
+                <CartWidget value={1} />
+            </nav>
+            <nav className="sm:hidden p-2 flex items-center justify-between font-Poppins shadow-lg">
+                <h1 className="text-2xl text-secondary font-bold">
+                    <NavLink to={"/"}>CoolGamers</NavLink>
+                </h1>
+                <GiHamburgerMenu
+                    className="mr-4"
+                    size={25}
+                    onClick={handleMenuToggle}
+                />
+            </nav>
+            <ul
+                className={
+                    menu === true
+                        ? "sm:hidden list-none flex flex-col justify-between items-center gap-5  text-secondary"
+                        : "hidden"
+                }
+            >
+                <NavLink className="" to={"/category/pc"}>
+                    <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
+                        PC
+                    </button>
+                </NavLink>
+                <NavLink className="" to={"/category/perifericos"}>
+                    <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
+                        Perifericos
+                    </button>
+                </NavLink>
+                <NavLink
+                    className="hover:bg-slate-50"
+                    to={"/category/componentes"}
+                >
+                    <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
+                        Componentes
+                    </button>
+                </NavLink>
             </ul>
-            <CartWidget value={1} />
-        </div>
+        </>
     );
 }
 

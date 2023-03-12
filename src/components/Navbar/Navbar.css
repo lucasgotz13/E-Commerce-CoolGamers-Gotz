@@ -15,7 +15,7 @@
     margin-right: 100px;
 }
 
-.categorias > li > button {
+.categorias > a > button {
     border: none;
     background-color: white;
     cursor: pointer;
@@ -23,7 +23,7 @@
     border-radius: 5%;
 }
 
-.categorias > li > button:hover {
+.categorias > a > button:hover {
     background-color: rgb(225, 230, 230);
 }
 

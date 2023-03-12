@@ -1,0 +1,34 @@
+{
+    "productos": [{
+        "id": 1,
+        "name": "Mouse Logitech G403 Hero Gaming",
+        "color": "negro",
+        "precio": 14999,
+        "category": "perifericos",
+        "img": "./assets/images/Logitech-pro-x-negro.png"
+    },
+    {
+        "id": 2,
+        "name": "Mouse Logitech G403 Hero Gaming",
+        "color": "negro",
+        "precio": 14999,
+        "category": "perifericos",
+        "img": ""
+    },
+    {
+        "id": 3,
+        "name": "Mouse Logitech G403 Hero Gaming",
+        "color": "negro",
+        "precio": 14999,
+        "category": "perifericos",
+        "img": ""
+    },
+    {
+        "id": 4,
+        "name": "Mouse Logitech G403 Hero Gaming",
+        "color": "negro",
+        "precio": 14999,
+        "category": "perifericos",
+        "img": ""
+    }]
+}
