@@ -14,26 +14,45 @@ function Navbar() {
         <>
             <nav className="hidden sm:flex sm:justify-between sm:items-center sm:py-1 sm:px-5 font-Poppins bg-primary shadow-lg">
                 <h1 className="text-2xl text-secondary">
-                    <NavLink to={"/"}>CoolGamers</NavLink>
+                    <NavLink
+                        to={"/"}
+                        className={({ isActive }) =>
+                            isActive ? "border-b-2 border-b-accent" : ""
+                        }
+                    >
+                        CoolGamers
+                    </NavLink>
                 </h1>
                 <ul className="list-none flex justify-between items-center gap-5 mr-24 text-secondary font-bold">
-                    <NavLink className="" to={"/category/pc"}>
-                        <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
-                            PC
-                        </button>
-                    </NavLink>
-                    <NavLink className="" to={"/category/perifericos"}>
-                        <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
-                            Perifericos
-                        </button>
+                    <NavLink
+                        to={"/category/pc"}
+                        className={({ isActive }) =>
+                            isActive
+                                ? "border-b-2 border-b-accent bg-white cursor-pointer p-2.5 hover:bg-slate-300 "
+                                : "border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md"
+                        }
+                    >
+                        PC
                     </NavLink>
                     <NavLink
-                        className="hover:bg-slate-50"
+                        to={"/category/perifericos"}
+                        className={({ isActive }) =>
+                            isActive
+                                ? "border-b-2 border-b-accent bg-white cursor-pointer p-2.5 hover:bg-slate-300 "
+                                : "border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md"
+                        }
+                    >
+                        Perifericos
+                    </NavLink>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive
+                                ? "border-b-2 border-b-accent bg-white cursor-pointer p-2.5 hover:bg-slate-300 "
+                                : "border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md"
+                        }
                         to={"/category/componentes"}
                     >
-                        <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
-                            Componentes
-                        </button>
+                        Componentes
                     </NavLink>
                 </ul>
                 <CartWidget value={1} />
@@ -55,18 +74,24 @@ function Navbar() {
                         : "hidden"
                 }
             >
-                <NavLink className="" to={"/category/pc"}>
+                <NavLink
+                    className={({ isActive }) => (isActive ? "underline" : "")}
+                    to={"/category/pc"}
+                >
                     <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
                         PC
                     </button>
                 </NavLink>
-                <NavLink className="" to={"/category/perifericos"}>
+                <NavLink
+                    className={({ isActive }) => (isActive ? "underline" : "")}
+                    to={"/category/perifericos"}
+                >
                     <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
                         Perifericos
                     </button>
                 </NavLink>
                 <NavLink
-                    className="hover:bg-slate-50"
+                    className={({ isActive }) => (isActive ? "underline" : "")}
                     to={"/category/componentes"}
                 >
                     <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">

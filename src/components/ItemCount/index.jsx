@@ -39,7 +39,7 @@ function ItemCount() {
                     <Button onClick={increaseNumberItems}>+</Button>
                 </li>
             </ul>
-            <Button onClick={addToCart} colorScheme="secondary" w={225}>
+            <Button onClick={addToCart} colorScheme="whatsapp" w={225}>
                 Agregar al carrito
             </Button>
         </div>
