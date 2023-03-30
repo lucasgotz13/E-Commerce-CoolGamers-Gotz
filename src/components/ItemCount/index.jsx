@@ -1,32 +1,21 @@
-import { useState } from "react";
 import { Button } from "@chakra-ui/react";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
-function ItemCount() {
-    const [count, setCount] = useState(1);
-    const [stock, setStock] = useState(20);
+function ItemCount({ item }) {
+    const {
+        count,
+        stock,
+        increaseNumberItems,
+        decreaseNumberItems,
+        addToCart,
+        cart,
+        setCart,
+        addItem,
+    } = useContext(CartContext);
 
-    const increaseNumberItems = () => {
-        if (count < stock) {
-            setCount(count + 1);
-        }
-    };
-
-    const decreaseNumberItems = () => {
-        if (count > 1) {
-            setCount(count - 1);
-        }
-    };
-
-    const addToCart = () => {
-        if (count <= stock) {
-            console.log("Producto añadido al carrito");
-            console.log(count);
-            setStock(stock - count);
-            console.log(stock);
-        } else {
-            console.log("No hay stock para esa cantidad");
-        }
-    };
+    console.log(cart);
+    console.log(item);
 
     return (
         <div className="flex flex-col">
@@ -36,12 +25,22 @@ function ItemCount() {
                 </li>
                 <li>{count}</li>
                 <li>
-                    <Button onClick={increaseNumberItems}>+</Button>
+                    <Button onClick={() => increaseNumberItems(item)}>+</Button>
                 </li>
             </ul>
-            <Button onClick={addToCart} colorScheme="whatsapp" w={225}>
-                Agregar al carrito
-            </Button>
+            {item.stock ? (
+                <Button
+                    onClick={() => addItem(item, count)}
+                    colorScheme="whatsapp"
+                    w={225}
+                >
+                    Agregar al carrito
+                </Button>
+            ) : (
+                <Button w={225} isDisabled>
+                    No Hay stock
+                </Button>
+            )}
         </div>
     );
 }

@@ -6,8 +6,6 @@ import "../index.css";
 function Root() {
     const params = useParams();
     const isCategoryRoute = Boolean(params.id);
-    console.log({ isCategoryRoute });
-    console.log(params.id);
 
     return (
         <div>

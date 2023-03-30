@@ -8,6 +8,7 @@ export default [
         precio: 14999,
         category: "perifericos",
         img: "../assets/images/Logitech-pro-x-negro.png",
+        stock: 20,
     },
     {
         id: 2,
@@ -17,6 +18,7 @@ export default [
         precio: 14999,
         category: "perifericos",
         img: "../assets/images/teclado-marvo.jpg",
+        stock: 20,
     },
     {
         id: 3,
@@ -27,6 +29,7 @@ export default [
         precio: 14999,
         category: "perifericos",
         img: "../assets/images/glorious-model-o.jpg",
+        stock: 20,
     },
     {
         id: 4,
@@ -37,6 +40,7 @@ export default [
         precio: 14999,
         category: "perifericos",
         img: "../assets/images/Logitech-pro-x-negro.png",
+        stock: 20,
     },
     {
         id: 5,
@@ -47,6 +51,7 @@ export default [
         precio: 14999,
         category: "componentes",
         img: "../assets/images/Logitech-pro-x-negro.png",
+        stock: 20,
     },
     {
         id: 6,
@@ -57,6 +62,7 @@ export default [
         precio: 14999,
         category: "componentes",
         img: "../assets/images/Logitech-pro-x-negro.png",
+        stock: 20,
     },
     {
         id: 7,
@@ -67,6 +73,7 @@ export default [
         precio: 14999,
         category: "componentes",
         img: "../assets/images/Logitech-pro-x-negro.png",
+        stock: 20,
     },
     {
         id: 8,
@@ -76,5 +83,6 @@ export default [
         precio: 14999,
         category: "componentes",
         img: "../assets/images/Logitech-pro-x-negro.png",
+        stock: 20,
     },
 ];

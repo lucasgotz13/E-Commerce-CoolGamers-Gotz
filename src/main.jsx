@@ -4,6 +4,9 @@ import App from "./routes/root";
 import Item from "./routes/item";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import ErrorPage from "./routes/error-page";
+import CartProvider from "./context/CartContext";
+import CartContainer from "./components/CartContainer";
 
 const colors = {
     secondary: {
@@ -22,9 +25,22 @@ const colors = {
 
 const theme = extendTheme({ colors });
 
+import { initializeApp } from "firebase/app";
+const firebaseConfig = {
+    apiKey: "AIzaSyDxjQDgVNSiSLmHn7gQ3jTXxuVtmxNLWOY",
+    authDomain: "e-commerce-coderhouse-gotz.firebaseapp.com",
+    projectId: "e-commerce-coderhouse-gotz",
+    storageBucket: "e-commerce-coderhouse-gotz.appspot.com",
+    messagingSenderId: "391853838718",
+    appId: "1:391853838718:web:d59962e85ad3fd37ab632f",
+};
+
+initializeApp(firebaseConfig);
+
 const router = createBrowserRouter([
     {
         path: "/",
+        errorElement: <ErrorPage />,
         element: <App />,
     },
     {
@@ -37,7 +53,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/cart",
-        element: <div>Hello world!</div>,
+        element: <CartContainer />,
     },
     {
         path: "/checkout",
@@ -47,8 +63,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <ChakraProvider theme={theme}>
-            <RouterProvider router={router} />
-        </ChakraProvider>
+        <CartProvider>
+            <ChakraProvider theme={theme}>
+                <RouterProvider router={router} />
+            </ChakraProvider>
+        </CartProvider>
     </React.StrictMode>
 );

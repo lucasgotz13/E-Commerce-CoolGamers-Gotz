@@ -12,7 +12,7 @@ function Navbar() {
 
     return (
         <>
-            <nav className="hidden sm:flex sm:justify-between sm:items-center sm:py-1 sm:px-5 font-Poppins bg-primary shadow-lg">
+            <nav className="hidden sm:flex sm:justify-between sm:items-center sm:py-1 sm:px-5 font-Poppins bg-primary shadow-lg sticky top-0 z-20">
                 <h1 className="text-2xl text-secondary">
                     <NavLink
                         to={"/"}
