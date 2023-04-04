@@ -5,7 +5,6 @@ import Navbar from "../Navbar";
 function CartContainer() {
     return (
         <>
-            <Navbar />
             <Cart />
         </>
     );

@@ -7,7 +7,6 @@ function ErrorPage() {
 
     return (
         <>
-            <Navbar />
             <div className="grid place-items-center">
                 <h1>Oops!</h1>
                 <p>Ha occurrido un error</p>

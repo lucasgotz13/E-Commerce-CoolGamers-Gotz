@@ -2,6 +2,7 @@ import CartWidget from "../CartWidget";
 import { NavLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
+import { FiShoppingCart } from "react-icons/fi";
 
 function Navbar() {
     const [menu, setMenu] = useState(false);
@@ -59,18 +60,33 @@ function Navbar() {
             </nav>
             <nav className="sm:hidden p-2 flex items-center justify-between font-Poppins shadow-lg">
                 <h1 className="text-2xl text-secondary font-bold">
-                    <NavLink to={"/"}>CoolGamers</NavLink>
+                    <NavLink
+                        to={"/"}
+                        onClick={() => setMenu(menu ? !menu : false)}
+                    >
+                        CoolGamers
+                    </NavLink>
                 </h1>
-                <GiHamburgerMenu
-                    className="mr-4"
-                    size={25}
-                    onClick={handleMenuToggle}
-                />
+                <div className="flex">
+                    <CartWidget value={1} />
+                    <NavLink to={"/cart"}>
+                        <FiShoppingCart
+                            size={25}
+                            className="mr-4"
+                            onClick={() => setMenu(menu ? !menu : false)}
+                        />
+                    </NavLink>
+                    <GiHamburgerMenu
+                        className="mr-4"
+                        size={25}
+                        onClick={handleMenuToggle}
+                    />
+                </div>
             </nav>
             <ul
                 className={
                     menu === true
-                        ? "sm:hidden list-none flex flex-col justify-between items-center gap-5  text-secondary"
+                        ? "sm:hidden mt-2 list-none flex flex-col justify-between items-center gap-5  text-secondary font-Poppins "
                         : "hidden"
                 }
             >
@@ -78,7 +94,10 @@ function Navbar() {
                     className={({ isActive }) => (isActive ? "underline" : "")}
                     to={"/category/pc"}
                 >
-                    <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
+                    <button
+                        className="border-none bg-white cursor-pointer p-2.5 transition-all duration-300 ease-in-out hover:bg-gray-100 rounded-md"
+                        onClick={() => setMenu(!menu)}
+                    >
                         PC
                     </button>
                 </NavLink>
@@ -86,7 +105,10 @@ function Navbar() {
                     className={({ isActive }) => (isActive ? "underline" : "")}
                     to={"/category/perifericos"}
                 >
-                    <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
+                    <button
+                        className="border-none bg-white cursor-pointer p-2.5 transition-all duration-300 ease-in-out hover:bg-gray-100 rounded-md"
+                        onClick={() => setMenu(!menu)}
+                    >
                         Perifericos
                     </button>
                 </NavLink>
@@ -94,7 +116,10 @@ function Navbar() {
                     className={({ isActive }) => (isActive ? "underline" : "")}
                     to={"/category/componentes"}
                 >
-                    <button className="border-none bg-white cursor-pointer p-2.5 hover:bg-slate-300 rounded-md">
+                    <button
+                        className="border-none bg-white cursor-pointer p-2.5 transition-all duration-300 ease-in-out hover:bg-gray-100 rounded-md"
+                        onClick={() => setMenu(!menu)}
+                    >
                         Componentes
                     </button>
                 </NavLink>

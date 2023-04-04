@@ -9,7 +9,6 @@ function Root() {
 
     return (
         <div>
-            <Navbar />
             <ItemListContainer
                 isCategoryRoute={isCategoryRoute}
                 categoryId={params.id}

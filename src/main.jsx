@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./routes/root";
+import Root from "./routes/root";
 import Item from "./routes/item";
+import Layout from "./components/Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import ErrorPage from "./routes/error-page";
@@ -39,25 +40,30 @@ initializeApp(firebaseConfig);
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        errorElement: <ErrorPage />,
-        element: <App />,
-    },
-    {
-        path: "/category/:id",
-        element: <App />,
-    },
-    {
-        path: "/item/:id",
-        element: <Item />,
-    },
-    {
-        path: "/cart",
-        element: <CartContainer />,
-    },
-    {
-        path: "/checkout",
-        element: <div>Hello world!</div>,
+        element: <Layout />,
+        children: [
+            {
+                path: "/",
+                errorElement: <ErrorPage />,
+                element: <Root />,
+            },
+            {
+                path: "/category/:id",
+                element: <Root />,
+            },
+            {
+                path: "/item/:id",
+                element: <Item />,
+            },
+            {
+                path: "/cart",
+                element: <CartContainer />,
+            },
+            {
+                path: "/checkout",
+                element: <div>Hello world!</div>,
+            },
+        ],
     },
 ]);
 

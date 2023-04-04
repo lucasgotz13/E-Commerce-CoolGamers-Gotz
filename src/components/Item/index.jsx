@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@chakra-ui/react";
+import { CartContext } from "../../context/CartContext";
 
-function Item({ id, title, precio, image }) {
+function Item({ id, title, precio, image, itemInfo }) {
+    const { setCount, addItem } = useContext(CartContext);
+
     return (
         <div className="p-4 border-2 border-gray-200 font-Poppins flex flex-col items-center gap-2.5 max-w-xs">
             <img src={image} alt={image} className="w-48 m-2 rounded-lg" />
-            <h4>{title}</h4>
+            <h4 className="text-center">{title}</h4>
             <h4>${precio}</h4>
-            <Link to={`/item/${id}`}>
+            <Link to={`/item/${id}`} onClick={() => setCount(1)}>
                 <Button colorScheme="secondary">Ver item</Button>
             </Link>
-            <Button colorScheme="whatsapp">Agregar al carrito</Button>
+            <Button colorScheme="whatsapp" onClick={() => addItem(itemInfo, 1)}>
+                Agregar al carrito
+            </Button>
         </div>
     );
 }

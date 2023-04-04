@@ -9,16 +9,12 @@ function CartProvider({ children }) {
     const [item, setItem] = useState(null);
     const [cart, setCart] = useState([]);
 
-    const increaseNumberItems = (item) => {
-        if (count < item.stock) {
-            setCount(count + 1);
-        }
+    const increaseNumberItems = () => {
+        setCount(count + 1);
     };
 
     const decreaseNumberItems = () => {
-        if (count > 1) {
-            setCount(count - 1);
-        }
+        setCount(count - 1);
     };
 
     const addToCart = () => {

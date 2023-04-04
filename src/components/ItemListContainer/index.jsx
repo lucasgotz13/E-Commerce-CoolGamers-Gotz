@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ItemList from "../ItemList";
 import ItemListSkeleton from "../ItemListSkeleton";
 import {
@@ -44,9 +44,12 @@ function ItemListContainer({ categoryId, isCategoryRoute }) {
         }
     }, [categoryId]);
 
+    // When changing category, show skeleton while loading
+
     if (!products) {
         return <ItemListSkeleton />;
     }
+
     return (
         <>
             <ItemList productos={products} />
