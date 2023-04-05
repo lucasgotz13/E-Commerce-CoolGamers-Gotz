@@ -14,7 +14,7 @@ function CartWidget() {
     console.log(cartTotalItems);
 
     return (
-        <div className="hidden sm:flex items-center gap-2">
+        <div className="hidden sm:flex items-center gap-2 ">
             <NavLink to={"/cart"}>
                 <FiShoppingCart size={30} className="mr-2" />
             </NavLink>

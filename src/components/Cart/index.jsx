@@ -10,6 +10,7 @@ import {
     doc,
     updateDoc,
 } from "firebase/firestore";
+import { NavLink } from "react-router-dom";
 
 function Cart() {
     const { cart, removeItem, clearCart } = useContext(CartContext);
@@ -74,18 +75,38 @@ function Cart() {
                     </div>
                 ))}
             </div>
-            <h4>Total: {total}</h4>
-            <Button
-                colorScheme={"whatsapp"}
-                w={40}
-                onClick={sendOrder}
-                className="mb-5"
-            >
-                Pagar
-            </Button>
-            <Button colorScheme={"secondary"} w={40} onClick={clearCart}>
-                Limpiar carrito
-            </Button>
+
+            {cart.length > 0 ? (
+                <>
+                    <h4>Total: {total}</h4>
+                    <Button
+                        colorScheme={"whatsapp"}
+                        w={40}
+                        onClick={sendOrder}
+                        className="mb-5"
+                    >
+                        Pagar
+                    </Button>
+                    <Button
+                        colorScheme={"secondary"}
+                        w={40}
+                        onClick={clearCart}
+                    >
+                        Limpiar carrito
+                    </Button>
+                </>
+            ) : (
+                <div className="flex flex-col items-center gap-10">
+                    <h1 className="text-5xl text-center font-Poppins font-bold">
+                        No hay ningun producto en el carrito
+                    </h1>
+                    <NavLink to={"/"}>
+                        <Button colorScheme={"secondary"}>
+                            Volver al inicio
+                        </Button>
+                    </NavLink>
+                </div>
+            )}
         </div>
     );
 }

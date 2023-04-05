@@ -4,7 +4,7 @@ import { Icon } from "@chakra-ui/react";
 
 function Footer() {
     return (
-        <div className="mt-20 p-24 flex flex-col items-center justify-center bg-secondary text-primary font-Poppins">
+        <div className="sticky top-full p-16 flex flex-col items-center justify-center bg-secondary text-primary font-Poppins">
             <h1 className="text-xl text-center font-bold mb-2.5">
                 Síguenos en nuestras redes!
             </h1>

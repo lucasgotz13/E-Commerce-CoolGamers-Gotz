@@ -4,7 +4,7 @@ import { Outlet as Page } from "react-router-dom";
 
 function Layout() {
     return (
-        <main>
+        <main className="min-h-screen">
             <Navbar />
             <Page />
             <Footer />

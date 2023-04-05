@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .custom-underline {
+        @apply relative  font-Poppins  tracking-[1px]  
+    }
+    .custom-underline::after {
+        @apply content-[''] bg-secondary h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl absolute duration-300  
+    }
+    .custom-underline:hover::after {
+        @apply w-[100%]
+    }
+    .custom-underline:active::after {
+        @apply w-[100%]
+    }
+
+    .custom-underline-logo {
+        @apply relative font-Poppins tracking-[1px]  
+    }
+    .custom-underline-logo::after {
+        @apply content-[''] bg-accent h-[3px] w-[0%] left-0 -bottom-[1px] rounded-xl absolute duration-300  
+    }
+    .custom-underline-logo:hover::after {
+        @apply w-[100%]
+    }
+    .custom-underline-logo:active::after {
+        @apply w-[100%]
+    }
+
+    .custom-underline-navbar {
+        @apply relative font-Poppins tracking-[1px]  
+    }
+    .custom-underline-navbar::after {
+        @apply content-[''] bg-secondary h-[3px] w-[0%] left-0 -bottom-[1px] rounded-xl absolute duration-300  
+    }
+    .custom-underline-navbar:hover::after {
+        @apply w-[100%]
+    }
+    .custom-underline-navbar:active::after {
+        @apply w-[100%]
+    }
+}
