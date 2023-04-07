@@ -1,6 +1,5 @@
 import { Button } from "@chakra-ui/react";
 import { Link, useRouteError } from "react-router-dom";
-import Navbar from "../components/Navbar";
 
 function ErrorPage() {
     const error = useRouteError();

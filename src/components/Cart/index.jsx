@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { FaTrash } from "react-icons/fa";
-import { Button } from "@chakra-ui/react";
+import { Button, Icon } from "@chakra-ui/react";
 import {
     getFirestore,
     collection,
@@ -13,9 +13,14 @@ import {
 import { NavLink } from "react-router-dom";
 
 function Cart() {
-    const { cart, removeItem, clearCart } = useContext(CartContext);
+    const { cart, setCart, removeItem, clearCart } = useContext(CartContext);
     console.log(cart);
     const db = getFirestore();
+
+    const total = cart.reduce(
+        (acc, curr) => acc + curr.precio * curr.cantidad,
+        0
+    );
 
     function updateOrder(productId, finalStock) {
         const itemRef = doc(db, "items", productId);
@@ -30,7 +35,7 @@ function Cart() {
                 phone: "999999",
             },
             items: cart,
-            total: 0,
+            total: total,
         };
 
         const collectionRef = collection(db, "orders");
@@ -43,12 +48,9 @@ function Cart() {
                 });
             })
             .catch((err) => console.log({ err }));
-    }
 
-    const total = cart.reduce(
-        (acc, curr) => acc + curr.precio * curr.cantidad,
-        0
-    );
+        setCart([]);
+    }
 
     console.log({ total });
 
@@ -59,34 +61,49 @@ function Cart() {
             </h1>
             <div className="mt-10 mb-10 flex flex-col gap-4">
                 {cart.map((item) => (
-                    <div className="flex items-center gap-4" key={item.id}>
+                    <div
+                        className="p-5 flex flex-col sm:flex-row justify-center sm:justify-start items-center gap-4 border-2 border-dashed max-w-2xl font-Poppins"
+                        key={item.id}
+                    >
                         <img
                             src={item.image}
                             alt={item.title}
                             className="w-32"
                         />
-                        <div>
-                            <h1>{item.title}</h1>
-                            <p>Cantidad: {item.cantidad}</p>
+                        <div className="mt-5 flex justify-between items-center">
+                            <div className="flex flex-col sm:justify-between gap-1 mr-36">
+                                <h1 className="text-sm font-bold">
+                                    {item.title}
+                                </h1>
+                                <p>Cantidad: {item.cantidad}</p>
+                                <p>Precio: ${item.precio}</p>
+                            </div>
+                            <Icon
+                                boxSize={["12", "14"]}
+                                onClick={() => removeItem(item.id)}
+                                className="ml-auto"
+                            >
+                                <FaTrash />
+                            </Icon>
                         </div>
-                        <button onClick={() => removeItem(item.id)}>
-                            <FaTrash size={25} />
-                        </button>
                     </div>
                 ))}
             </div>
 
             {cart.length > 0 ? (
-                <>
-                    <h4>Total: {total}</h4>
-                    <Button
-                        colorScheme={"whatsapp"}
-                        w={40}
-                        onClick={sendOrder}
-                        className="mb-5"
-                    >
-                        Pagar
-                    </Button>
+                <div className="flex flex-col justify-center items-center sm:items-start">
+                    <h4 className="text-xl mb-5">
+                        Total: <span className="font-bold">${total}</span>
+                    </h4>
+                    <NavLink to={"/checkout"}>
+                        <Button
+                            colorScheme={"whatsapp"}
+                            w={40}
+                            className="mb-5"
+                        >
+                            Ir a pagar
+                        </Button>
+                    </NavLink>
                     <Button
                         colorScheme={"secondary"}
                         w={40}
@@ -94,10 +111,10 @@ function Cart() {
                     >
                         Limpiar carrito
                     </Button>
-                </>
+                </div>
             ) : (
-                <div className="flex flex-col items-center gap-10">
-                    <h1 className="text-5xl text-center font-Poppins font-bold">
+                <div className="mt-20 flex flex-col items-center gap-10">
+                    <h1 className="text-3xl sm:text-5xl text-center font-Poppins font-bold">
                         No hay ningun producto en el carrito
                     </h1>
                     <NavLink to={"/"}>

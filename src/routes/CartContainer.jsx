@@ -1,6 +1,5 @@
 import React from "react";
-import Cart from "../Cart";
-import Navbar from "../Navbar";
+import Cart from "../components/Cart";
 
 function CartContainer() {
     return (

@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import ErrorPage from "./routes/error-page";
 import CartProvider from "./context/CartContext";
-import CartContainer from "./components/CartContainer";
+import CartContainer from "./routes/CartContainer";
 
 const colors = {
     secondary: {
@@ -27,6 +27,7 @@ const colors = {
 const theme = extendTheme({ colors });
 
 import { initializeApp } from "firebase/app";
+import Checkout from "./routes/checkout";
 const firebaseConfig = {
     apiKey: "AIzaSyDxjQDgVNSiSLmHn7gQ3jTXxuVtmxNLWOY",
     authDomain: "e-commerce-coderhouse-gotz.firebaseapp.com",
@@ -61,7 +62,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/checkout",
-                element: <div>Hello world!</div>,
+                element: <Checkout />,
             },
         ],
     },

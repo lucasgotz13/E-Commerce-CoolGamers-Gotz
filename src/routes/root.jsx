@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import ItemListContainer from "../components/ItemListContainer";
-import Navbar from "../components/Navbar";
 import "../index.css";
 
 function Root() {
