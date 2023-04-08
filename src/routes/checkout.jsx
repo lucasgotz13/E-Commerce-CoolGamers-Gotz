@@ -9,12 +9,14 @@ import {
     updateDoc,
 } from "firebase/firestore";
 import Swal from "sweetalert2";
+import OrderDetail from "../components/OrderDetail";
 
 function Checkout() {
     const { cart, setCart } = useContext(CartContext);
     const [nameValue, setNameValue] = useState("");
     const [emailValue, setEmailValue] = useState("");
     const [phoneValue, setPhoneValue] = useState("");
+    const [orderId, setOrderId] = useState(null);
     const db = getFirestore();
 
     const total = cart.reduce(
@@ -66,19 +68,30 @@ function Checkout() {
 
         addDoc(collectionRef, order)
             .then((response) => {
+                setOrderId(response._key.path.segments[1]);
                 cart.map((product) => {
                     const finalStock = product.stock - product.cantidad;
                     updateOrder(product.id, finalStock);
                 });
                 Swal.fire({
                     title: "Gracias por tu compra!",
-                    text: `Tu orden de compra es: ${response._key.path.segments[1]}`,
                     icon: "success",
                 });
             })
             .catch((err) => console.log({ err }));
 
         setCart([]);
+    }
+
+    if (cart.length === 0) {
+        return (
+            <OrderDetail
+                orderId={orderId}
+                nameValue={nameValue}
+                emailValue={emailValue}
+                phoneValue={phoneValue}
+            />
+        );
     }
     return (
         <div className="p-10 font-Poppins">
