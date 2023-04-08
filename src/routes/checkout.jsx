@@ -8,6 +8,7 @@ import {
     getFirestore,
     updateDoc,
 } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 function Checkout() {
     const { cart, setCart } = useContext(CartContext);
@@ -64,10 +65,15 @@ function Checkout() {
         const collectionRef = collection(db, "orders");
 
         addDoc(collectionRef, order)
-            .then(() => {
+            .then((response) => {
                 cart.map((product) => {
                     const finalStock = product.stock - product.cantidad;
                     updateOrder(product.id, finalStock);
+                });
+                Swal.fire({
+                    title: "Gracias por tu compra!",
+                    text: `Tu orden de compra es: ${response._key.path.segments[1]}`,
+                    icon: "success",
                 });
             })
             .catch((err) => console.log({ err }));
