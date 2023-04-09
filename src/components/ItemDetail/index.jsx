@@ -16,7 +16,9 @@ function ItemDetail({ item }) {
                     className="w-72 mb-20 sm:w-96 sm:mb-0"
                 />
                 <div className="flex flex-col items-center sm:items-start gap-8">
-                    <h1 className="text-3xl font-Poppins ">{item?.title}</h1>
+                    <h1 className="text-3xl font-Poppins max-w-lg">
+                        {item?.title}
+                    </h1>
                     <p className="max-w-md">{item?.description}</p>
                     <p className="text-3xl text-accent font-Poppins">
                         Precio: ${item?.precio}
