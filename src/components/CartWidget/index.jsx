@@ -4,14 +4,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
 function CartWidget() {
-    const { cart } = useContext(CartContext);
-    console.log(cart);
-
-    const cartTotalItems = cart.reduce(
-        (acc, currentValue) => acc + currentValue.cantidad,
-        0
-    );
-    console.log(cartTotalItems);
+    const { cartTotalItems } = useContext(CartContext);
 
     return (
         <div className="hidden sm:flex items-center gap-2 ">

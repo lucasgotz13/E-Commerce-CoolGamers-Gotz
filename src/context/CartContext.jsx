@@ -47,6 +47,11 @@ function CartProvider({ children }) {
         setCart([]);
     };
 
+    const cartTotalItems = cart.reduce(
+        (acc, currentValue) => acc + currentValue.cantidad,
+        0
+    );
+
     return (
         <CartContext.Provider
             value={{
@@ -64,6 +69,7 @@ function CartProvider({ children }) {
                 addItem,
                 removeItem,
                 clearCart,
+                cartTotalItems,
             }}
         >
             {children}

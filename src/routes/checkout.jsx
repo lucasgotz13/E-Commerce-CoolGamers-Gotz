@@ -29,7 +29,7 @@ function Checkout() {
         /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/.test(
             value
         );
-    const isPhoneNumber = (value) => Boolean(parseInt(value));
+    const isPhoneNumber = (value) => /^11\s\d{4}\s\d{4}$/.test(value);
 
     const handlePayment = (e) => {
         e.preventDefault();
@@ -44,7 +44,11 @@ function Checkout() {
                 sendOrder();
             }
         } else {
-            console.log("ERROR");
+            Swal.fire({
+                icon: "error",
+                title: "ERROR",
+                text: "Uno o mas datos fueron ingresados incorrectamente.",
+            });
         }
     };
 
@@ -115,7 +119,7 @@ function Checkout() {
                             E-mail:
                         </label>
                         <input
-                            type="text"
+                            type="email"
                             onChange={(e) => setEmailValue(e.target.value)}
                             placeholder="ejemplo@email.com"
                         />
@@ -125,9 +129,9 @@ function Checkout() {
                             Número de teléfono:
                         </label>
                         <input
-                            type="number"
+                            type="text"
                             onChange={(e) => setPhoneValue(e.target.value)}
-                            placeholder="+54 11 1234 5678"
+                            placeholder="11 1234 5678"
                         />
                     </div>
                     <Button

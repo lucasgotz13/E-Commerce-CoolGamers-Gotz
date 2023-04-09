@@ -81,7 +81,7 @@ function Cart() {
                             <Icon
                                 boxSize={["12", "14"]}
                                 onClick={() => removeItem(item.id)}
-                                className="ml-auto"
+                                className="ml-auto hover:cursor-pointer"
                             >
                                 <FaTrash />
                             </Icon>
@@ -113,7 +113,7 @@ function Cart() {
                     </Button>
                 </div>
             ) : (
-                <div className="mt-20 flex flex-col items-center gap-10">
+                <div className="mt-10 sm:mt-20 flex flex-col items-center gap-10">
                     <h1 className="text-3xl sm:text-5xl text-center font-Poppins font-bold">
                         No hay ningun producto en el carrito
                     </h1>

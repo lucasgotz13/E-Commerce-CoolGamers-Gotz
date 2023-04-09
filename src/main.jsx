@@ -29,19 +29,21 @@ const theme = extendTheme({ colors });
 import { initializeApp } from "firebase/app";
 import Checkout from "./routes/checkout";
 const firebaseConfig = {
-    apiKey: "AIzaSyDxjQDgVNSiSLmHn7gQ3jTXxuVtmxNLWOY",
-    authDomain: "e-commerce-coderhouse-gotz.firebaseapp.com",
-    projectId: "e-commerce-coderhouse-gotz",
-    storageBucket: "e-commerce-coderhouse-gotz.appspot.com",
-    messagingSenderId: "391853838718",
-    appId: "1:391853838718:web:d59962e85ad3fd37ab632f",
+    apiKey: import.meta.env.VITE_apiKey,
+    authDomain: import.meta.env.VITE_authDomain,
+    projectId: import.meta.env.VITE_projectId,
+    storageBucket: import.meta.env.VITE_storageBucket,
+    messagingSenderId: import.meta.env.VITE_messagingSenderId,
+    appId: import.meta.env.VITE_appId,
 };
 
 initializeApp(firebaseConfig);
+console.log();
 
 const router = createBrowserRouter([
     {
         element: <Layout />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",

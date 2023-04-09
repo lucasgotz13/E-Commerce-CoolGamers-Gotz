@@ -1,5 +1,6 @@
 import React from "react";
 import { Skeleton } from "@chakra-ui/react";
+import ErrorPage from "../../routes/error-page";
 
 function ItemDetailSkeleton() {
     return (

@@ -3,7 +3,7 @@ import Item from "../Item";
 
 function ItemList({ productos }) {
     return (
-        <div className="p-20 flex flex-wrap justify-center gap-5">
+        <div className="p-20 flex flex-wrap justify-start gap-5">
             {productos?.map((producto) => (
                 <Item key={producto?.id} {...producto} itemInfo={producto} />
             ))}
