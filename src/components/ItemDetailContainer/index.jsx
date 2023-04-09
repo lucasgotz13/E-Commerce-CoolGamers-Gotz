@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import products from "../../mocks/products";
 import ItemDetail from "../ItemDetail";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
@@ -26,7 +25,7 @@ function ItemDetailContainer({}) {
     }, []);
 
     if (!products) {
-        return <ItemDetailSkeleton itemExists={docExists} />;
+        return <ItemDetailSkeleton />;
     }
 
     return (

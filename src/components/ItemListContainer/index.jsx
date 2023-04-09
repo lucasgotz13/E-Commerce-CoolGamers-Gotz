@@ -44,8 +44,6 @@ function ItemListContainer({ categoryId, isCategoryRoute }) {
         }
     }, [categoryId]);
 
-    // When changing category, show skeleton while loading
-
     if (!products) {
         return <ItemListSkeleton />;
     }

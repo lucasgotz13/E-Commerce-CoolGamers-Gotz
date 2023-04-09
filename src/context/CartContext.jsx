@@ -1,5 +1,6 @@
 import { createContext } from "react";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 export const CartContext = createContext();
 
@@ -33,8 +34,16 @@ function CartProvider({ children }) {
         if (itemInCart) {
             itemInCart.cantidad += cantidad;
             setCart([...cart]);
+            Swal.fire({
+                title: "Producto agregado al carrito!",
+                icon: "success",
+            });
         } else {
             setCart([...cart, { ...producto, cantidad }]);
+            Swal.fire({
+                title: "Producto agregado al carrito!",
+                icon: "success",
+            });
         }
     };
 
