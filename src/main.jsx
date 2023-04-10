@@ -38,7 +38,6 @@ const firebaseConfig = {
 };
 
 initializeApp(firebaseConfig);
-console.log();
 
 const router = createBrowserRouter([
     {

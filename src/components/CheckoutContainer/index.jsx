@@ -40,7 +40,6 @@ function CheckoutContainer() {
             isPhoneNumber(phoneValue) !== false
         ) {
             if (cart.length >= 1) {
-                console.log("Compra exitosa");
                 sendOrder();
             }
         } else {

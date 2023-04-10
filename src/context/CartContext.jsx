@@ -20,12 +20,7 @@ function CartProvider({ children }) {
 
     const addToCart = () => {
         if (count <= stock) {
-            console.log("Producto añadido al carrito");
-            console.log(count);
             setStock(stock - count);
-            console.log(stock);
-        } else {
-            console.log("No hay stock para esa cantidad");
         }
     };
 

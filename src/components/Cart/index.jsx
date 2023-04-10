@@ -3,56 +3,15 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { FaTrash } from "react-icons/fa";
 import { Button, Icon } from "@chakra-ui/react";
-import {
-    getFirestore,
-    collection,
-    addDoc,
-    doc,
-    updateDoc,
-} from "firebase/firestore";
 import { NavLink } from "react-router-dom";
 
 function Cart() {
-    const { cart, setCart, removeItem, clearCart } = useContext(CartContext);
-    console.log(cart);
-    const db = getFirestore();
+    const { cart, removeItem, clearCart } = useContext(CartContext);
 
     const total = cart.reduce(
         (acc, curr) => acc + curr.precio * curr.cantidad,
         0
     );
-
-    function updateOrder(productId, finalStock) {
-        const itemRef = doc(db, "items", productId);
-        updateDoc(itemRef, { stock: finalStock });
-    }
-
-    function sendOrder() {
-        const order = {
-            buyer: {
-                name: "Jorge",
-                email: "ejemplo@ejemplo.com",
-                phone: "999999",
-            },
-            items: cart,
-            total: total,
-        };
-
-        const collectionRef = collection(db, "orders");
-
-        addDoc(collectionRef, order)
-            .then(() => {
-                cart.map((product) => {
-                    const finalStock = product.stock - product.cantidad;
-                    updateOrder(product.id, finalStock);
-                });
-            })
-            .catch((err) => console.log({ err }));
-
-        setCart([]);
-    }
-
-    console.log({ total });
 
     return (
         <div className="p-10 flex flex-col">

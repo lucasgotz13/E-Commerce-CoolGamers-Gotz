@@ -4,17 +4,8 @@ import { NavLink } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
 function ItemCount({ item }) {
-    const {
-        count,
-        increaseNumberItems,
-        decreaseNumberItems,
-        cart,
-        addItem,
-        addDisabled,
-    } = useContext(CartContext);
-
-    console.log(cart);
-    console.log(item);
+    const { count, increaseNumberItems, decreaseNumberItems, cart, addItem } =
+        useContext(CartContext);
 
     return (
         <div className="flex flex-col">

@@ -16,9 +16,6 @@ function ItemDetailContainer({}) {
             .then((snapshot) => {
                 if (snapshot.exists()) {
                     setProducts({ id: snapshot.id, ...snapshot.data() });
-                    console.log(snapshot.data());
-                } else {
-                    console.log("No existe el producto");
                 }
             })
             .catch((err) => console.log({ err }));
