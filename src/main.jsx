@@ -25,7 +25,7 @@ const colors = {
 };
 
 const theme = extendTheme({ colors });
-
+// test
 import { initializeApp } from "firebase/app";
 import Checkout from "./routes/checkout";
 const firebaseConfig = {
